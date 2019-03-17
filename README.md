@@ -1,1 +1,4 @@
-ECHO is on.
+# Ohjelmistotekniikka harjoitustyö
+
+*vähän testaillaan*
+**lihava testi =)**
