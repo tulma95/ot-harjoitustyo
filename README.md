@@ -1,4 +1,4 @@
-# Fish Swim
+﻿# Fish Swim
 
 Fish Swim on peli, jossa pelaajan tarkoituksena on päästä mahdollisimman pitkälle merilevää väistellen. 
 
@@ -22,3 +22,5 @@ Fish Swim on peli, jossa pelaajan tarkoituksena on päästä mahdollisimman pitk
 epäsynkroon
 
 ### viikko2
+
+[Testikattavuus](https://github.com/tulma95/ot-harjoitustyo/blob/master/laskarit/viikko2/testikattavuus.png)
