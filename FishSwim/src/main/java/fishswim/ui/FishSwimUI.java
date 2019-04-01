@@ -15,7 +15,7 @@ public class FishSwimUI extends Application {
 
     @Override
     public void init() throws Exception {
-        fish = new Fish();
+        fish = new Fish(50, 50);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class FishSwimUI extends Application {
                         fish.swimUp();
                     }
                 });
-                
+
                 fish.move();
             }
         }.start();
