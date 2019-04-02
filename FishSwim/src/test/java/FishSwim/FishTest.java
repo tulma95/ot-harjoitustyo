@@ -1,6 +1,5 @@
 package FishSwim;
 
-import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import fishswim.domain.Fish;
 import org.junit.Before;
