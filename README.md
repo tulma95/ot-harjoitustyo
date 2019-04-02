@@ -2,25 +2,26 @@
 
 Fish Swim on peli, jossa pelaajan tarkoituksena on päästä mahdollisimman pitkälle merilevää väistellen. 
 
+## Dokumentaatio
+
 [Vaatimusmäärittely](https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/vaatimusmaarittely.md)
 
 [Tuntikirjanpito](https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/tuntikirjanpito.md)
 
+## Komentorivitoiminnot
 
-## Laskarit
+### Testaus
 
-### viikko1
+Testit suoritetaan komennolla
 
-*vähän testaillaan*
+```
+mvn test
+```
 
-**lihava testi =)**
+Testikattavuusraportti luodaan komennolla
 
-[komentorivi.txt](https://github.com/tulma95/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+```
+mvn jacoco:report
+```
 
-[gitlog.txt](https://github.com/tulma95/ot-harjoitustyo/blob/master/laskarit/viikko1/log.txt)
-
-epäsynkroon
-
-### viikko2
-
-[Testikattavuus](https://github.com/tulma95/ot-harjoitustyo/blob/master/laskarit/viikko2/testikattavuus.png)
+Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/jacoco/index.html_
