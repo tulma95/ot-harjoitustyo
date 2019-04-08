@@ -3,23 +3,29 @@ package fishswim.ui;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import fishswim.domain.Fish;
+import fishswim.domain.GameLogic;
 import fishswim.domain.Obstacle;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 public class FishSwimUI extends Application {
 
+    private GameLogic fishSwim;
+    private Scene gameScene;
+
     private Fish fish;
     private Obstacle obstacle;
-    private Scene gameScene;
 
     @Override
     public void init() throws Exception {
         fish = new Fish(50, 50);
+        obstacle = new Obstacle();
 
+        fishSwim = new GameLogic(fish, obstacle);
     }
 
     @Override
@@ -27,9 +33,10 @@ public class FishSwimUI extends Application {
 
         // gameScene
         Pane pane = new Pane();
-        obstacle = new Obstacle();
-        pane.getChildren().addAll(obstacle.getObstacles());
-        pane.getChildren().add(fish);
+        Text pointsText = new Text(350, 20, "Points: " + fishSwim.getPoints().get());
+        pane.getChildren().addAll(fishSwim.getObstacle().getObstacles());
+        pane.getChildren().add(fishSwim.getFish());
+        pane.getChildren().add(pointsText);
 
         new AnimationTimer() {
             long previous = 0;
@@ -42,11 +49,11 @@ public class FishSwimUI extends Application {
 
                 gameScene.setOnKeyPressed(event -> {
                     if (event.getCode() == KeyCode.W) {
-                        fish.swimUp();
+                        fishSwim.getFish().swimUp();
                     }
                 });
-                obstacle.move();
-                fish.move();
+                pointsText.setText("Points: " + fishSwim.getPoints().get());
+                fishSwim.moveAll();
             }
         }.start();
 

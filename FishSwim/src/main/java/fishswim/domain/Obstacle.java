@@ -8,12 +8,18 @@ public class Obstacle implements GameObject {
     private Rectangle upperObstacle;
     private Rectangle lowerObstacle;
     private int gap;
+    private double x;
 
     public Obstacle() {
         this.gap = 125;
         this.upperObstacle = new Rectangle();
         this.lowerObstacle = new Rectangle();
         this.generateObstacle();
+        this.x = upperObstacle.getX();
+    }
+
+    public double getX() {
+        return x;
     }
 
     @Override
@@ -23,6 +29,7 @@ public class Obstacle implements GameObject {
         }
         this.upperObstacle.setX(this.upperObstacle.getX() - 1);
         this.lowerObstacle.setX(this.lowerObstacle.getX() - 1);
+        this.x = upperObstacle.getX();
     }
 
     public Rectangle[] getObstacles() {
