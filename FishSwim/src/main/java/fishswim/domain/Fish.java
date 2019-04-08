@@ -2,7 +2,7 @@ package fishswim.domain;
 
 import javafx.scene.shape.Circle;
 
-public class Fish extends Circle {
+public class Fish extends Circle implements GameObject {
 
     private double ySpeed;
     private double gravity;
@@ -15,6 +15,7 @@ public class Fish extends Circle {
         this.acc = 1;
     }
 
+    @Override
     public void move() {
         if (this.getCenterY() < 15) {
             this.setCenterY(15);
