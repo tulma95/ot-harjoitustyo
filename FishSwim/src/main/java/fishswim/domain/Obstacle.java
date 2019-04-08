@@ -10,27 +10,39 @@ public class Obstacle implements GameObject {
     private int gap;
 
     public Obstacle() {
-        this.gap = 100;
-        this.upperObstacle = new Rectangle(400, 0, 50, 150);
-        this.lowerObstacle = new Rectangle(400, 250, 50, 150);
+        this.gap = 125;
+        this.upperObstacle = new Rectangle();
+        this.lowerObstacle = new Rectangle();
+        this.generateObstacle();
     }
 
     @Override
     public void move() {
         if (this.upperObstacle.getX() < -50) {
-            this.upperObstacle.setX(400);
-            this.lowerObstacle.setX(400);
+            this.generateObstacle();
         }
         this.upperObstacle.setX(this.upperObstacle.getX() - 1);
         this.lowerObstacle.setX(this.lowerObstacle.getX() - 1);
     }
 
-    public Rectangle getUpperObstacle() {
-        return upperObstacle;
+    public Rectangle[] getObstacles() {
+        Rectangle[] rects = {this.upperObstacle, this.lowerObstacle};
+        return rects;
     }
 
-    public Rectangle getLowerObstacle() {
-        return lowerObstacle;
-    }
+    private void generateObstacle() {
+        Random r = new Random();
+        double y = r.nextInt(175) + 50;
 
+        this.upperObstacle.setX(400);
+        this.upperObstacle.setY(0);
+        this.upperObstacle.setWidth(50);
+        this.upperObstacle.setHeight(y);
+
+        this.lowerObstacle.setX(400);
+        this.lowerObstacle.setY(y + gap);
+        this.lowerObstacle.setWidth(50);
+        this.lowerObstacle.setHeight(400 - y - gap);
+
+    }
 }

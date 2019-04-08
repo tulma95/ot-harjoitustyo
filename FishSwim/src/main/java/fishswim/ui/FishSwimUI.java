@@ -28,11 +28,8 @@ public class FishSwimUI extends Application {
         // gameScene
         Pane pane = new Pane();
         obstacle = new Obstacle();
+        pane.getChildren().addAll(obstacle.getObstacles());
         pane.getChildren().add(fish);
-        System.out.println(obstacle.getUpperObstacle());
-        System.out.println(obstacle.getLowerObstacle());
-        pane.getChildren().add(obstacle.getUpperObstacle());
-        pane.getChildren().add(obstacle.getLowerObstacle());
 
         new AnimationTimer() {
             long previous = 0;
