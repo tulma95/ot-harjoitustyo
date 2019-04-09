@@ -2,6 +2,7 @@ package fishswim.domain;
 
 import javafx.scene.shape.Rectangle;
 import java.util.Random;
+import javafx.scene.shape.Shape;
 
 public class Obstacle implements GameObject {
 
@@ -20,6 +21,15 @@ public class Obstacle implements GameObject {
 
     public double getX() {
         return x;
+    }
+
+    public boolean checkCollision(Fish fish) {
+        if (upperObstacle.intersects(fish.boundsInLocalProperty().get())) {
+            return true;
+        } else if (lowerObstacle.intersects(fish.boundsInLocalProperty().get())) {
+            return true;
+        }
+        return false;
     }
 
     @Override

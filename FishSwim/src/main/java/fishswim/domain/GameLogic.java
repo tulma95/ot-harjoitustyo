@@ -20,6 +20,11 @@ public class GameLogic {
         if (Math.floor(this.obstacle.getX()) == 35) {
             points.incrementAndGet();
         }
+
+    }
+
+    public boolean continueGame() {
+        return !obstacle.checkCollision(fish);
     }
 
     public Obstacle getObstacle() {

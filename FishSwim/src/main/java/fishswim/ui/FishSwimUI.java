@@ -32,11 +32,11 @@ public class FishSwimUI extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         // gameScene
-        Pane pane = new Pane();
+        Pane gamePane = new Pane();
         Text pointsText = new Text(350, 20, "Points: " + fishSwim.getPoints().get());
-        pane.getChildren().addAll(fishSwim.getObstacle().getObstacles());
-        pane.getChildren().add(fishSwim.getFish());
-        pane.getChildren().add(pointsText);
+        gamePane.getChildren().addAll(fishSwim.getObstacle().getObstacles());
+        gamePane.getChildren().add(fishSwim.getFish());
+        gamePane.getChildren().add(pointsText);
 
         new AnimationTimer() {
             long previous = 0;
@@ -54,10 +54,13 @@ public class FishSwimUI extends Application {
                 });
                 pointsText.setText("Points: " + fishSwim.getPoints().get());
                 fishSwim.moveAll();
+                if (!fishSwim.continueGame()) {
+                    stop();
+                }
             }
         }.start();
 
-        gameScene = new Scene(pane, 400, 400);
+        gameScene = new Scene(gamePane, 400, 400);
         primaryStage.setScene(gameScene);
         primaryStage.show();
 
