@@ -63,15 +63,16 @@ public class FishSwimUI extends Application {
 
             @Override
             public void handle(long now) {
-                if (now - previous > 1000000000L) {
-                    System.out.println("t''");
+                if (now - previous > 500000000L) {
                     pointsText.setText("Points: " + fishSwim.getPoints().get());
+
+                    this.previous = now;
+                }
+                if (now - previous > 100000000L) {
                     if (!fishSwim.continueGame()) {
                         stop();
                         mainMenu(primaryStage);
                     }
-                    this.previous = now;
-
                 }
                 gameScene.setOnKeyPressed(event -> {
                     if (event.getCode() == KeyCode.W) {
