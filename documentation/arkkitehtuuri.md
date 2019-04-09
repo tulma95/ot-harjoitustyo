@@ -1,0 +1,1 @@
+<img src="https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/Kuvat/Pakkauskaavio.png" width="750">
