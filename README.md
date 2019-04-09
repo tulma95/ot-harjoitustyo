@@ -12,6 +12,14 @@ Fish Swim on peli, jossa pelaajan tarkoituksena on päästä mahdollisimman pitk
 
 ## Komentorivitoiminnot
 
+### Ohjelman käynnistäminen
+
+Ohjelman voi käynnistää komennolla
+
+```
+mvn compile exec:java -Dexec.mainClass=fishswim.ui.FishSwimUI
+```
+
 ### Testaus
 
 Testit suoritetaan komennolla
@@ -27,3 +35,11 @@ mvn jacoco:report
 ```
 
 Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/jacoco/index.html_
+
+### Checkstyle
+
+```
+ mvn jxr:jxr checkstyle:checkstyle
+```
+
+Mahdolliset virheilmoitukset selviävät avaamalla selaimella tiedosto _target/site/checkstyle.html_
