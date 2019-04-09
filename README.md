@@ -8,6 +8,8 @@ Fish Swim on peli, jossa pelaajan tarkoituksena on päästä mahdollisimman pitk
 
 [Tuntikirjanpito](https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/tuntikirjanpito.md)
 
+[Arkkitehtuurikuvaus](https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/arkkitehtuuri.md)
+
 ## Komentorivitoiminnot
 
 ### Testaus
