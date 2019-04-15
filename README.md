@@ -2,6 +2,8 @@
 
 Fish Swim on peli, jossa pelaajan tarkoituksena on päästä mahdollisimman pitkälle merilevää väistellen. 
 
+Peliä pelataan  W-näppäimellä
+
 ## Dokumentaatio
 
 [Vaatimusmäärittely](https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/vaatimusmaarittely.md)
@@ -9,6 +11,8 @@ Fish Swim on peli, jossa pelaajan tarkoituksena on päästä mahdollisimman pitk
 [Tuntikirjanpito](https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/tuntikirjanpito.md)
 
 [Arkkitehtuurikuvaus](https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/arkkitehtuuri.md)
+
+[Ladattava jar](https://github.com/tulma95/ot-harjoitustyo/releases)
 
 ## Komentorivitoiminnot
 
@@ -43,3 +47,13 @@ Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto _target/site/ja
 ```
 
 Mahdolliset virheilmoitukset selviävät avaamalla selaimella tiedosto _target/site/checkstyle.html_
+
+### Suoritettavan jarin generointi
+
+Komento
+
+```
+mvn package
+```
+
+generoi hakemistoon _target_ suoritettavan jar-tiedoston _FishSwim-1.0-SNAPSHOT.jar_
