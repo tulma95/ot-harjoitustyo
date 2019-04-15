@@ -53,6 +53,10 @@ public class FishSwimUI extends Application {
         mainMenuPane.add(title, 0, 0);
         mainMenuPane.add(buttons, 0, 1);
 
+        exitButton.setOnAction(e -> {
+            primaryStage.close();
+        });
+
         playButton.setOnAction(e -> {
             startGame(primaryStage);
         });
@@ -83,12 +87,10 @@ public class FishSwimUI extends Application {
                     return;
                 }
                 pointsText.setText("Points: " + fishSwim.getPoints().get());
-//
                 if (!fishSwim.continueGame()) {
                     stop();
                     primaryStage.setScene(mainMenu);
                 }
-//                }
                 gameScene.setOnKeyPressed(event -> {
                     if (event.getCode() == KeyCode.W) {
                         fishSwim.getFish().swimUp();
