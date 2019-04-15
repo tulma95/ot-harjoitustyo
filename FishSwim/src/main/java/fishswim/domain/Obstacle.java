@@ -19,6 +19,14 @@ public class Obstacle implements GameObject {
         this.x = upperObstacle.getX();
     }
 
+    public Rectangle getUpperObstacle() {
+        return upperObstacle;
+    }
+
+    public Rectangle getLowerObstacle() {
+        return lowerObstacle;
+    }
+
     public double getX() {
         return x;
     }
@@ -47,7 +55,7 @@ public class Obstacle implements GameObject {
         return rects;
     }
 
-    private void generateObstacle() {
+    public void generateObstacle() {
         Random r = new Random();
         double y = r.nextInt(175) + 50;
 
