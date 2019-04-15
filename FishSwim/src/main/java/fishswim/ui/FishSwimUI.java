@@ -1,22 +1,20 @@
 package fishswim.ui;
 
+import fishswim.domain.DbConnection;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import fishswim.domain.Fish;
 import fishswim.domain.GameLogic;
 import fishswim.domain.Obstacle;
 import javafx.animation.AnimationTimer;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -24,18 +22,13 @@ public class FishSwimUI extends Application {
 
     private GameLogic fishSwim;
 //    private Scene gameScene;
+    private Scene mainMenu;
+    private Scene scoreScene;
 
     @Override
     public void init() throws Exception {
-
-    }
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-
-        mainMenu(primaryStage);
-        primaryStage.show();
-
+        DbConnection conn = new DbConnection();
+        conn.connect();
     }
 
     public void mainMenu(Stage primaryStage) {
@@ -66,8 +59,7 @@ public class FishSwimUI extends Application {
         playButton.setOnAction(e -> {
             startGame(primaryStage);
         });
-        Scene menuScene = new Scene(mainMenuPane, 400, 400);
-        primaryStage.setScene(menuScene);
+        mainMenu = new Scene(mainMenuPane, 400, 400);
 
     }
 
@@ -97,7 +89,7 @@ public class FishSwimUI extends Application {
                 if (now - previous > 100000000L) {
                     if (!fishSwim.continueGame()) {
                         stop();
-                        mainMenu(primaryStage);
+                        primaryStage.setScene(mainMenu);
                     }
                 }
                 gameScene.setOnKeyPressed(event -> {
@@ -109,6 +101,15 @@ public class FishSwimUI extends Application {
 
             }
         }.start();
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+
+        mainMenu(primaryStage);
+        primaryStage.setScene(mainMenu);
+        primaryStage.show();
+
     }
 
     public static void main(String[] args) {
