@@ -6,11 +6,18 @@ import fishswim.domain.Fish;
 import fishswim.domain.GameLogic;
 import fishswim.domain.Obstacle;
 import javafx.animation.AnimationTimer;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class FishSwimUI extends Application {
@@ -32,10 +39,29 @@ public class FishSwimUI extends Application {
     }
 
     public void mainMenu(Stage primaryStage) {
-        Pane mainMenuPane = new Pane();
-        Button playButton = new Button("Play game");
+        GridPane mainMenuPane = new GridPane();
+        mainMenuPane.setVgap(100);
+        mainMenuPane.setAlignment(Pos.TOP_CENTER);
 
-        mainMenuPane.getChildren().add(playButton);
+        VBox buttons = new VBox();
+        buttons.setPrefWidth(100);
+        buttons.setAlignment(Pos.CENTER);
+
+        Button playButton = new Button("Play game");
+        playButton.setPrefWidth(100);
+        Button scoresButton = new Button("Hi-Scores");
+        scoresButton.setPrefWidth(100);
+        Button exitButton = new Button("Exit");
+        exitButton.setPrefWidth(100);
+
+        buttons.getChildren().addAll(playButton, scoresButton, exitButton);
+
+        Label title = new Label("Fish Swim");
+        title.setFont(Font.font(40));
+        title.setAlignment(Pos.CENTER);
+
+        mainMenuPane.add(title, 0, 0);
+        mainMenuPane.add(buttons, 0, 1);
 
         playButton.setOnAction(e -> {
             startGame(primaryStage);
