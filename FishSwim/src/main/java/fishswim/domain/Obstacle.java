@@ -10,13 +10,19 @@ public class Obstacle implements GameObject {
     private Rectangle lowerObstacle;
     private int gap;
     private double x;
+    private double speed;
 
-    public Obstacle() {
+    public Obstacle(double speed) {
         this.gap = 125;
         this.upperObstacle = new Rectangle();
         this.lowerObstacle = new Rectangle();
         this.generateObstacle();
         this.x = upperObstacle.getX();
+        this.speed = speed;
+    }
+
+    public double getSpeed() {
+        return speed;
     }
 
     public Rectangle getUpperObstacle() {
@@ -42,8 +48,8 @@ public class Obstacle implements GameObject {
 
     @Override
     public void move() {
-        this.upperObstacle.setX(this.upperObstacle.getX() - 4);
-        this.lowerObstacle.setX(this.lowerObstacle.getX() - 4);
+        this.upperObstacle.setX(this.upperObstacle.getX() - speed);
+        this.lowerObstacle.setX(this.lowerObstacle.getX() - speed);
         if (this.upperObstacle.getX() < -50) {
             this.generateObstacle();
         }

@@ -17,7 +17,7 @@ public class ObstacleTest {
 
     @Before
     public void setUp() {
-        this.obstacle = new Obstacle();
+        this.obstacle = new Obstacle(4);
     }
 
     @Test

@@ -10,6 +10,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -28,7 +29,41 @@ public class FishSwimUI extends Application {
     public void init() throws Exception {
     }
 
-    public void mainMenu(Stage primaryStage) {
+    public void createScoreScene(Stage primaryStage) {
+        GridPane pane = new GridPane();
+        pane.setAlignment(Pos.CENTER);
+
+        TextField textfield = new TextField();
+        textfield.setPrefWidth(100);
+
+        Button playAgainButton = new Button("Play again");
+        playAgainButton.setPrefWidth(100);
+        Button saveScoreButton = new Button("Save score");
+        saveScoreButton.setPrefWidth(100);
+        Button mainMenuButton = new Button("Main Menu");
+        mainMenuButton.setPrefWidth(100);
+
+        VBox buttons = new VBox();
+        buttons.getChildren()
+                .addAll(saveScoreButton, playAgainButton, mainMenuButton);
+
+        buttons.setAlignment(Pos.CENTER);
+
+        pane.add(textfield, 0, 0);
+        pane.add(buttons, 0, 1);
+
+        playAgainButton.setOnAction(e -> {
+            startGame(primaryStage);
+        });
+
+        mainMenuButton.setOnAction(e -> {
+            primaryStage.setScene(mainMenu);
+        });
+
+        scoreScene = new Scene(pane, 400, 400);
+    }
+
+    public void createMainMenu(Stage primaryStage) {
         GridPane mainMenuPane = new GridPane();
         mainMenuPane.setVgap(100);
         mainMenuPane.setAlignment(Pos.TOP_CENTER);
@@ -36,9 +71,7 @@ public class FishSwimUI extends Application {
         VBox buttons = new VBox();
         buttons.setPrefWidth(100);
         buttons.setAlignment(Pos.CENTER);
-        
-        
-        
+
         Button playButton = new Button("Play game");
         playButton.setPrefWidth(100);
         Button scoresButton = new Button("Hi-Scores");
@@ -68,7 +101,7 @@ public class FishSwimUI extends Application {
 
     public void startGame(Stage primaryStage) {
         Fish fish = new Fish(50, 50);
-        Obstacle obstacle = new Obstacle();
+        Obstacle obstacle = new Obstacle(4);
         fishSwim = new GameLogic(fish, obstacle);
 
         Pane gamePane = new Pane();
@@ -91,7 +124,7 @@ public class FishSwimUI extends Application {
                 pointsText.setText("Points: " + fishSwim.getPoints().get());
                 if (!fishSwim.continueGame()) {
                     stop();
-                    primaryStage.setScene(mainMenu);
+                    primaryStage.setScene(scoreScene);
                 }
                 gameScene.setOnKeyPressed(event -> {
                     if (event.getCode() == KeyCode.W) {
@@ -107,7 +140,9 @@ public class FishSwimUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        mainMenu(primaryStage);
+        createMainMenu(primaryStage);
+        createScoreScene(primaryStage);
+
         primaryStage.setScene(mainMenu);
         primaryStage.show();
 
