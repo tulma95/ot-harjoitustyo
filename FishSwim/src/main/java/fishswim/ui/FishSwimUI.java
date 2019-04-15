@@ -1,6 +1,5 @@
 package fishswim.ui;
 
-import fishswim.domain.DbConnection;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import fishswim.domain.Fish;
@@ -27,8 +26,6 @@ public class FishSwimUI extends Application {
 
     @Override
     public void init() throws Exception {
-        DbConnection conn = new DbConnection();
-        conn.connect();
     }
 
     public void mainMenu(Stage primaryStage) {
@@ -81,24 +78,24 @@ public class FishSwimUI extends Application {
 
             @Override
             public void handle(long now) {
-                if (now - previous > 500000000L) {
-                    pointsText.setText("Points: " + fishSwim.getPoints().get());
 
-                    this.previous = now;
+                if (now - previous < 1000000000 / 100) {
+                    return;
                 }
-                if (now - previous > 100000000L) {
-                    if (!fishSwim.continueGame()) {
-                        stop();
-                        primaryStage.setScene(mainMenu);
-                    }
+                pointsText.setText("Points: " + fishSwim.getPoints().get());
+//
+                if (!fishSwim.continueGame()) {
+                    stop();
+                    primaryStage.setScene(mainMenu);
                 }
+//                }
                 gameScene.setOnKeyPressed(event -> {
                     if (event.getCode() == KeyCode.W) {
                         fishSwim.getFish().swimUp();
                     }
                 });
                 fishSwim.moveAll();
-
+                previous = now;
             }
         }.start();
     }

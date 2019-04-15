@@ -17,7 +17,7 @@ public class GameLogic {
     public void moveAll() {
         this.fish.move();
         this.obstacle.move();
-        if (Math.floor(this.obstacle.getX()) == 35) {
+        if (Math.floor(this.obstacle.getX()) == 32) {
             points.incrementAndGet();
         }
 

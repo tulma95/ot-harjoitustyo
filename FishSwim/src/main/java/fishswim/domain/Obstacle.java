@@ -37,8 +37,8 @@ public class Obstacle implements GameObject {
         if (this.upperObstacle.getX() < -50) {
             this.generateObstacle();
         }
-        this.upperObstacle.setX(this.upperObstacle.getX() - 1.5);
-        this.lowerObstacle.setX(this.lowerObstacle.getX() - 1.5);
+        this.upperObstacle.setX(this.upperObstacle.getX() - 4);
+        this.lowerObstacle.setX(this.lowerObstacle.getX() - 4);
         this.x = upperObstacle.getX();
     }
 

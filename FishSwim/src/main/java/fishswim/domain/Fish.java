@@ -12,7 +12,7 @@ public class Fish extends Circle implements GameObject {
     public Fish(double x, double y) {
         super(x, y, 15);
         this.ySpeed = 1;
-        this.gravity = 0.05;
+        this.gravity = 0.15;
         this.acc = 1;
         this.HEIGHT = 400;
     }
@@ -20,7 +20,7 @@ public class Fish extends Circle implements GameObject {
     public Fish(double x, double y, double height) {
         super(x, y, 15);
         this.ySpeed = 1;
-        this.gravity = 0.05;
+        this.gravity = 0.15;
         this.acc = 1;
         this.HEIGHT = height;
     }
@@ -43,7 +43,7 @@ public class Fish extends Circle implements GameObject {
     }
 
     public void swimUp() {
-        this.ySpeed -= gravity * 75;
+        this.ySpeed -= gravity * 50;
     }
 
 }
