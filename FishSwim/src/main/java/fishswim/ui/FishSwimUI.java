@@ -6,6 +6,7 @@ import fishswim.domain.Fish;
 import fishswim.domain.GameLogic;
 import fishswim.domain.Obstacle;
 import javafx.animation.AnimationTimer;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -38,7 +39,7 @@ public class FishSwimUI extends Application {
 
         Button playAgainButton = new Button("Play again");
         playAgainButton.setPrefWidth(100);
-        Button saveScoreButton = new Button("Save score");
+        Button saveScoreButton = new Button("todo");
         saveScoreButton.setPrefWidth(100);
         Button mainMenuButton = new Button("Main Menu");
         mainMenuButton.setPrefWidth(100);
@@ -70,11 +71,12 @@ public class FishSwimUI extends Application {
 
         VBox buttons = new VBox();
         buttons.setPrefWidth(100);
+        buttons.setSpacing(5);
         buttons.setAlignment(Pos.CENTER);
 
         Button playButton = new Button("Play game");
         playButton.setPrefWidth(100);
-        Button scoresButton = new Button("Hi-Scores");
+        Button scoresButton = new Button("Hi-Scores (todo)");
         scoresButton.setPrefWidth(100);
         Button exitButton = new Button("Exit");
         exitButton.setPrefWidth(100);
