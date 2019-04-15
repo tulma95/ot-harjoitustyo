@@ -1,5 +1,6 @@
 package FishSwim;
 
+import fishswim.domain.Fish;
 import fishswim.domain.Obstacle;
 import static org.hamcrest.CoreMatchers.not;
 import org.junit.After;
@@ -20,11 +21,44 @@ public class ObstacleTest {
     }
 
     @Test
+    public void fishCanHitUpperObstacle() {
+        Fish fish = new Fish(400, 0);
+        assertThat(this.obstacle.checkCollision(fish), is(true));
+    }
+
+    @Test
+    public void fishCanHitLowerObstacle() {
+        Fish fish = new Fish(400, 395);
+        assertThat(this.obstacle.checkCollision(fish), is(true));
+    }
+
+    @Test
+    public void fishCanGoThroughGap() {
+        Fish fish = new Fish(400, this.obstacle.getLowerObstacle().getY() - 40);
+        assertThat(this.obstacle.checkCollision(fish), is(false));
+    }
+
+    @Test
     public void obstacleCanMove() {
         double previousX = this.obstacle.getX();
         this.obstacle.move();
 
         assertThat(previousX, is(not(this.obstacle.getX())));
+    }
+
+    @Test
+    public void generateNewObstacleWhenOutOfScreen() {
+        double previousY = this.obstacle.getLowerObstacle().getY();
+        this.obstacle.move();
+        while (true) {
+            if (this.obstacle.getX() == 400) {
+                break;
+            }
+            this.obstacle.move();
+        }
+
+        assertThat(previousY, is(not(this.obstacle.getLowerObstacle().getY())));
+
     }
 
     @Test

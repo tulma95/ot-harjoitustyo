@@ -42,11 +42,11 @@ public class Obstacle implements GameObject {
 
     @Override
     public void move() {
+        this.upperObstacle.setX(this.upperObstacle.getX() - 4);
+        this.lowerObstacle.setX(this.lowerObstacle.getX() - 4);
         if (this.upperObstacle.getX() < -50) {
             this.generateObstacle();
         }
-        this.upperObstacle.setX(this.upperObstacle.getX() - 4);
-        this.lowerObstacle.setX(this.lowerObstacle.getX() - 4);
         this.x = upperObstacle.getX();
     }
 

@@ -36,7 +36,9 @@ public class FishSwimUI extends Application {
         VBox buttons = new VBox();
         buttons.setPrefWidth(100);
         buttons.setAlignment(Pos.CENTER);
-
+        
+        
+        
         Button playButton = new Button("Play game");
         playButton.setPrefWidth(100);
         Button scoresButton = new Button("Hi-Scores");
