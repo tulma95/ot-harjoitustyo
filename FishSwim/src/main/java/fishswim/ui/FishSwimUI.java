@@ -78,7 +78,7 @@ public class FishSwimUI extends Application {
         pageNumber.setFont(Font.font(20));
         framePane.add(pageNumber, 1, 0);
         GridPane.setHalignment(pageNumber, HPos.CENTER);
-        
+
         HBox buttons = new HBox();
         Button nextButton = new Button(">");
         Button previousButton = new Button("<");
