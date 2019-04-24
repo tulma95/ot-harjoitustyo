@@ -17,7 +17,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -40,14 +42,46 @@ public class FishSwimUI extends Application {
         this.scoresDao = new ScoresDao();
     }
 
-    public void hiScoresScene(Stage primStage) {
+    public void hiScoresScene(Stage primStage, int page) {
         List<Player> players = scoresDao.getScores();
-        int page = 0;
-        GridPane pane = new GridPane();
-        for (int i = 0; i < 10; i++) {
-//            Text playerStats = new Text(STYLESHEET_MODENA)
-            pane.add(pane, i, i);
+        GridPane scoresPane = new GridPane();
+        scoresPane.setAlignment(Pos.CENTER);
+
+        BorderPane framePane = new BorderPane();
+        framePane.setCenter(scoresPane);
+
+        int listSize = players.size();
+        int howManyToShow = 0;
+        howManyToShow = listSize - (page * 10) > 10 ? 10 : listSize % 10;
+
+        for (int i = 0; i < howManyToShow; i++) {
+            Player player = players.get((page * 10) + i);
+            Text playerName = new Text(player.getName());
+            Text playerScore = new Text("\t" + player.getPoints());
+
+            scoresPane.add(playerName, 1, i);
+            scoresPane.add(playerScore, 2, i);
         }
+
+        Button backButton = new Button("Back");
+        backButton.setAlignment(Pos.TOP_LEFT);
+        framePane.setTop(backButton);
+
+        Button nextButton = new Button(">");
+        nextButton.setAlignment(Pos.BOTTOM_RIGHT);
+        framePane.setBottom(nextButton);
+
+        Button previousButton = new Button("<");
+        previousButton.setAlignment(Pos.BOTTOM_LEFT);
+        framePane.setBottom(previousButton);
+
+        backButton.setOnAction(e -> {
+            primStage.setScene(mainMenu);
+        });
+
+        Scene hiScoreScene = new Scene(framePane, width, height);
+        primStage.setScene(hiScoreScene);
+
     }
 
     public void endGameScene(Stage primaryStage, int points) {
@@ -130,7 +164,7 @@ public class FishSwimUI extends Application {
         });
 
         scoresButton.setOnAction(e -> {
-            scoresDao.getScores();
+            hiScoresScene(primaryStage, 0);
         });
 
         mainMenu = new Scene(mainMenuPane, width, height);
