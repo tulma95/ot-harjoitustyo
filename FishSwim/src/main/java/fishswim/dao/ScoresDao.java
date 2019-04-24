@@ -43,6 +43,11 @@ public class ScoresDao {
         }
     }
 
+    /**
+     * Saves player scores to database
+     *
+     * @param player object with name and points
+     */
     public void saveScores(Player player) {
         String sql = "INSERT INTO Scores(name, score) VALUES(?,?)";
         try (Connection conn = this.connect();
@@ -55,7 +60,12 @@ public class ScoresDao {
         }
     }
 
+    /**
+     * Method gets saved players and their scores from database
+     * @return list of player objects
+     */
     public List<Player> getScores() {
+
         List<Player> players = new ArrayList<>();
         String sql = "SELECT name, score FROM Scores ORDER BY score DESC";
         try (Connection conn = this.connect();

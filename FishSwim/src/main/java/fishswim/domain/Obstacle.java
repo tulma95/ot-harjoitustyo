@@ -6,13 +6,18 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 
 public class Obstacle implements GameObject {
-    
-    private Rectangle upperObstacle;
-    private Rectangle lowerObstacle;
-    private int gap;
+
+    private final Rectangle upperObstacle;
+    private final Rectangle lowerObstacle;
+    private final int gap;
     private double x;
-    private double speed;
-    
+    private final double speed;
+
+    /**
+     * Obstacle constructor  
+     * 
+     *  @param speed -Obstacle moving speed
+     */
     public Obstacle(double speed) {
         this.gap = 125;
         this.upperObstacle = new Rectangle();
@@ -21,30 +26,39 @@ public class Obstacle implements GameObject {
         this.x = upperObstacle.getX();
         this.speed = speed;
     }
-    
+
+    /**
+     * Method makes obstacles look fancier with self made graphics.
+     */
     public void setImg() {
         Image hook = new Image("hook.png");
         Image weed = new Image("weed.png");
         this.upperObstacle.setFill(new ImagePattern(hook));
         this.lowerObstacle.setFill(new ImagePattern(weed));
     }
-    
+
     public double getSpeed() {
         return speed;
     }
-    
+
     public Rectangle getUpperObstacle() {
         return upperObstacle;
     }
-    
+
     public Rectangle getLowerObstacle() {
         return lowerObstacle;
     }
-    
+
     public double getX() {
         return x;
     }
-    
+
+    /**
+     * Method checks if fish character hits upper or lower obstacle
+     *
+     * @param fish player character
+     * @return TRUE if fish collide with obstacle, else false
+     */
     public boolean checkCollision(Fish fish) {
         if (upperObstacle.intersects(fish.boundsInLocalProperty().get())) {
             return true;
@@ -53,7 +67,13 @@ public class Obstacle implements GameObject {
         }
         return false;
     }
-    
+
+    /**
+     * Method moves upper and lower obstacle if obstacle goes out of bounds it
+     * calls generateObstacle method to create new obstacles.
+     *
+     * @see Obstacle#generateObstacle()
+     */
     @Override
     public void move() {
         this.upperObstacle.setX(this.upperObstacle.getX() - speed);
@@ -63,25 +83,29 @@ public class Obstacle implements GameObject {
         }
         this.x = upperObstacle.getX();
     }
-    
+
     public Rectangle[] getObstacles() {
         Rectangle[] rects = {this.upperObstacle, this.lowerObstacle};
         return rects;
     }
-    
+
+    /**
+     * Method generates new obstacles with random y value which makes obstacle
+     * gap to change place.
+     */
     public void generateObstacle() {
         Random r = new Random();
         double y = r.nextInt(175) + 50;
-        
+
         this.upperObstacle.setX(400);
         this.upperObstacle.setY(0);
         this.upperObstacle.setWidth(50);
         this.upperObstacle.setHeight(y);
-        
+
         this.lowerObstacle.setX(400);
         this.lowerObstacle.setY(y + gap);
         this.lowerObstacle.setWidth(50);
         this.lowerObstacle.setHeight(400 - y - gap);
-        
+
     }
 }

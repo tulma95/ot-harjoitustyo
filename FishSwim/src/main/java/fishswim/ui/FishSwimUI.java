@@ -7,6 +7,8 @@ import fishswim.domain.Fish;
 import fishswim.domain.GameLogic;
 import fishswim.domain.Obstacle;
 import fishswim.domain.Player;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -28,13 +30,20 @@ public class FishSwimUI extends Application {
     private Scene endgameScene;
 //    private Scene 
     private ScoresDao scoresDao;
+    private double height;
+    private double width;
 
     @Override
     public void init() throws Exception {
+        this.height = 400;
+        this.width = 400;
         this.scoresDao = new ScoresDao();
     }
 
     public void hiScoresScene(Stage primStage) {
+        List<Player> players = scoresDao.getScores();
+
+        GridPane pane = new GridPane();
 
     }
 
@@ -80,7 +89,7 @@ public class FishSwimUI extends Application {
             primaryStage.setScene(mainMenu);
         });
 
-        primaryStage.setScene(new Scene(pane, 400, 400));
+        primaryStage.setScene(new Scene(pane, width, height));
     }
 
     public void createMainMenu(Stage primaryStage) {
@@ -121,22 +130,24 @@ public class FishSwimUI extends Application {
             scoresDao.getScores();
         });
 
-        mainMenu = new Scene(mainMenuPane, 400, 400);
+        mainMenu = new Scene(mainMenuPane, width, height);
 
     }
 
     public void startGame(Stage primaryStage) {
-        Fish fish = new Fish(50, 50);
+        Fish fish = new Fish(50, 50, height);
         Obstacle obstacle = new Obstacle(4);
         obstacle.setImg();
         fishSwim = new GameLogic(fish, obstacle);
 
         Pane gamePane = new Pane();
-        Text pointsText = new Text(350, 20, "Points: " + fishSwim.getPoints().get());
+        Text pointsText = new Text("Points: " + fishSwim.getPoints().get());
+        pointsText.setX((width / 2) - (pointsText.getLayoutBounds().getWidth() / 2));
+        pointsText.setY(20);
         gamePane.getChildren().addAll(fishSwim.getObstacle().getObstacles());
         gamePane.getChildren().add(fishSwim.getFish());
         gamePane.getChildren().add(pointsText);
-        Scene gameScene = new Scene(gamePane, 400, 400);
+        Scene gameScene = new Scene(gamePane, width, height);
         primaryStage.setScene(gameScene);
 
         new AnimationTimer() {
@@ -166,7 +177,7 @@ public class FishSwimUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
+        primaryStage.setTitle("Fish Swim");
         createMainMenu(primaryStage);
         primaryStage.setScene(mainMenu);
         primaryStage.show();

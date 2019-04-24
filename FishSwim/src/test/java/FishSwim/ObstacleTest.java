@@ -22,19 +22,19 @@ public class ObstacleTest {
 
     @Test
     public void fishCanHitUpperObstacle() {
-        Fish fish = new Fish(400, 0);
+        Fish fish = new Fish(400, 0, 400);
         assertThat(this.obstacle.checkCollision(fish), is(true));
     }
 
     @Test
     public void fishCanHitLowerObstacle() {
-        Fish fish = new Fish(400, 395);
+        Fish fish = new Fish(400, 395, 400);
         assertThat(this.obstacle.checkCollision(fish), is(true));
     }
 
     @Test
     public void fishCanGoThroughGap() {
-        Fish fish = new Fish(400, this.obstacle.getLowerObstacle().getY() - 40);
+        Fish fish = new Fish(400, this.obstacle.getLowerObstacle().getY() - 40, 400);
         assertThat(this.obstacle.checkCollision(fish), is(false));
     }
 
