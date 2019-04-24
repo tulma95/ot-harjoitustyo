@@ -25,7 +25,8 @@ public class FishSwimUI extends Application {
 
     private GameLogic fishSwim;
     private Scene mainMenu;
-    private Scene scoreScene;
+    private Scene endgameScene;
+//    private Scene 
     private ScoresDao scoresDao;
 
     @Override
@@ -33,12 +34,19 @@ public class FishSwimUI extends Application {
         this.scoresDao = new ScoresDao();
     }
 
-    public void createEndGameScene(Stage primaryStage) {
+    public void hiScoresScene(Stage primStage) {
+
+    }
+
+    public void endGameScene(Stage primaryStage, int points) {
         GridPane pane = new GridPane();
         pane.setAlignment(Pos.CENTER);
 
         TextField textfield = new TextField();
         textfield.setPrefWidth(100);
+
+        Label scores = new Label();
+        scores.setText("POINTS: " + points);
 
         Button playAgainButton = new Button("Play again");
         playAgainButton.setPrefWidth(100);
@@ -53,12 +61,13 @@ public class FishSwimUI extends Application {
 
         buttons.setAlignment(Pos.CENTER);
 
-        pane.add(textfield, 0, 0);
-        pane.add(buttons, 0, 1);
+        pane.add(scores, 0, 0);
+        pane.add(textfield, 0, 1);
+        pane.add(buttons, 0, 2);
 
         saveScoreButton.setOnAction(e -> {
             Player player = new Player(textfield.getText(),
-                    fishSwim.getPoints().intValue());
+                    points);
             scoresDao.saveScores(player);
             primaryStage.setScene(mainMenu);
         });
@@ -71,7 +80,7 @@ public class FishSwimUI extends Application {
             primaryStage.setScene(mainMenu);
         });
 
-        scoreScene = new Scene(pane, 400, 400);
+        primaryStage.setScene(new Scene(pane, 400, 400));
     }
 
     public void createMainMenu(Stage primaryStage) {
@@ -119,6 +128,7 @@ public class FishSwimUI extends Application {
     public void startGame(Stage primaryStage) {
         Fish fish = new Fish(50, 50);
         Obstacle obstacle = new Obstacle(4);
+        obstacle.setImg();
         fishSwim = new GameLogic(fish, obstacle);
 
         Pane gamePane = new Pane();
@@ -141,7 +151,7 @@ public class FishSwimUI extends Application {
                 pointsText.setText("Points: " + fishSwim.getPoints().get());
                 if (!fishSwim.continueGame()) {
                     stop();
-                    primaryStage.setScene(scoreScene);
+                    endGameScene(primaryStage, fishSwim.getPoints().get());
                 }
                 gameScene.setOnKeyPressed(event -> {
                     if (event.getCode() == KeyCode.W) {
@@ -158,8 +168,6 @@ public class FishSwimUI extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         createMainMenu(primaryStage);
-        createEndGameScene(primaryStage);
-
         primaryStage.setScene(mainMenu);
         primaryStage.show();
 

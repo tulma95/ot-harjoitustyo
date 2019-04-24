@@ -2,7 +2,8 @@ package fishswim.domain;
 
 import javafx.scene.shape.Rectangle;
 import java.util.Random;
-import javafx.scene.shape.Shape;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 
 public class Obstacle implements GameObject {
 
@@ -19,6 +20,11 @@ public class Obstacle implements GameObject {
         this.generateObstacle();
         this.x = upperObstacle.getX();
         this.speed = speed;
+    }
+
+    public void setImg() {
+        Image img = new Image("hook.png");
+        this.upperObstacle.setFill(new ImagePattern(img));
     }
 
     public double getSpeed() {
