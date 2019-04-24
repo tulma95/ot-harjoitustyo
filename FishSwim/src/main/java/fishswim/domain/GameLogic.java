@@ -13,9 +13,9 @@ public class GameLogic {
         this.obstacle = obstacle;
         this.points = new AtomicInteger();
     }
-    
+
     /**
-     * Method moves 
+     * Method moves all game characters
      */
     public void moveAll() {
         this.fish.move();
@@ -26,6 +26,11 @@ public class GameLogic {
 
     }
 
+    /**
+     * Checks if fish has hit obstacle
+     *
+     * @return True if fish has not hit obstacle, else false
+     */
     public boolean continueGame() {
         return !obstacle.checkCollision(fish);
     }
