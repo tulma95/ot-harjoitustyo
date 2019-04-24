@@ -129,7 +129,7 @@ public class FishSwimUI extends Application {
                     primaryStage.setScene(scoreScene);
                 }
                 gameScene.setOnKeyPressed(event -> {
-                    if (event.getCode() == KeyCode.W) {
+                    if (event.getCode() == KeyCode.W || event.getCode() == KeyCode.SPACE) {
                         fishSwim.getFish().swimUp();
                     }
                 });
