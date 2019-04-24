@@ -13,7 +13,10 @@ public class GameLogic {
         this.obstacle = obstacle;
         this.points = new AtomicInteger();
     }
-
+    
+    /**
+     * Method moves 
+     */
     public void moveAll() {
         this.fish.move();
         this.obstacle.move();

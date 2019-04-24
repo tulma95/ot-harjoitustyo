@@ -10,6 +10,7 @@ import fishswim.domain.Player;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.AnimationTimer;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -24,6 +25,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 public class FishSwimUI extends Application {
 
@@ -53,10 +55,10 @@ public class FishSwimUI extends Application {
 
         framePane.setVgap(50);
         framePane.setHgap(25);
+        framePane.setPadding(new Insets(50));
 
         int listSize = players.size();
-        int howManyToShow = 0;
-        howManyToShow = listSize - (page * 10) > 10 ? 10 : listSize % 10;
+        int howManyToShow = listSize - (page * 10) > 10 ? 10 : listSize % 10;
 
         for (int i = 0; i < howManyToShow; i++) {
             Player player = players.get((page * 10) + i);
@@ -72,9 +74,11 @@ public class FishSwimUI extends Application {
         Button backButton = new Button("Back");
         framePane.add(backButton, 0, 0);
 
-        Text pageNumber = new Text("Page " + page + 1);
+        Label pageNumber = new Label("Page " + page + 1);
+        pageNumber.setFont(Font.font(20));
         framePane.add(pageNumber, 1, 0);
-
+        GridPane.setHalignment(pageNumber, HPos.CENTER);
+        
         HBox buttons = new HBox();
         Button nextButton = new Button(">");
         Button previousButton = new Button("<");
