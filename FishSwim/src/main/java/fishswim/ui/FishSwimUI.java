@@ -1,10 +1,12 @@
 package fishswim.ui;
 
+import fishswim.dao.ScoresDao;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import fishswim.domain.Fish;
 import fishswim.domain.GameLogic;
 import fishswim.domain.Obstacle;
+import fishswim.domain.Player;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -22,15 +24,16 @@ import javafx.scene.text.Text;
 public class FishSwimUI extends Application {
 
     private GameLogic fishSwim;
-//    private Scene gameScene;
     private Scene mainMenu;
     private Scene scoreScene;
+    private ScoresDao scoresDao;
 
     @Override
     public void init() throws Exception {
+        this.scoresDao = new ScoresDao();
     }
 
-    public void createScoreScene(Stage primaryStage) {
+    public void createEndGameScene(Stage primaryStage) {
         GridPane pane = new GridPane();
         pane.setAlignment(Pos.CENTER);
 
@@ -39,7 +42,7 @@ public class FishSwimUI extends Application {
 
         Button playAgainButton = new Button("Play again");
         playAgainButton.setPrefWidth(100);
-        Button saveScoreButton = new Button("todo");
+        Button saveScoreButton = new Button("Save score");
         saveScoreButton.setPrefWidth(100);
         Button mainMenuButton = new Button("Main Menu");
         mainMenuButton.setPrefWidth(100);
@@ -52,6 +55,13 @@ public class FishSwimUI extends Application {
 
         pane.add(textfield, 0, 0);
         pane.add(buttons, 0, 1);
+
+        saveScoreButton.setOnAction(e -> {
+            Player player = new Player(textfield.getText(),
+                    fishSwim.getPoints().intValue());
+            scoresDao.saveScores(player);
+            primaryStage.setScene(mainMenu);
+        });
 
         playAgainButton.setOnAction(e -> {
             startGame(primaryStage);
@@ -76,7 +86,7 @@ public class FishSwimUI extends Application {
 
         Button playButton = new Button("Play game");
         playButton.setPrefWidth(100);
-        Button scoresButton = new Button("Hi-Scores (todo)");
+        Button scoresButton = new Button("Hi-Scores");
         scoresButton.setPrefWidth(100);
         Button exitButton = new Button("Exit");
         exitButton.setPrefWidth(100);
@@ -97,6 +107,11 @@ public class FishSwimUI extends Application {
         playButton.setOnAction(e -> {
             startGame(primaryStage);
         });
+
+        scoresButton.setOnAction(e -> {
+            scoresDao.getScores();
+        });
+
         mainMenu = new Scene(mainMenuPane, 400, 400);
 
     }
@@ -143,7 +158,7 @@ public class FishSwimUI extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         createMainMenu(primaryStage);
-        createScoreScene(primaryStage);
+        createEndGameScene(primaryStage);
 
         primaryStage.setScene(mainMenu);
         primaryStage.show();
