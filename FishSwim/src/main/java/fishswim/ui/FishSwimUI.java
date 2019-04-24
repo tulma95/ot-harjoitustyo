@@ -47,8 +47,12 @@ public class FishSwimUI extends Application {
         GridPane scoresPane = new GridPane();
         scoresPane.setAlignment(Pos.CENTER);
 
-        BorderPane framePane = new BorderPane();
-        framePane.setCenter(scoresPane);
+        GridPane framePane = new GridPane();
+        framePane.setAlignment(Pos.TOP_CENTER);
+        framePane.add(scoresPane, 1, 1);
+
+        framePane.setVgap(50);
+        framePane.setHgap(25);
 
         int listSize = players.size();
         int howManyToShow = 0;
@@ -56,24 +60,27 @@ public class FishSwimUI extends Application {
 
         for (int i = 0; i < howManyToShow; i++) {
             Player player = players.get((page * 10) + i);
+            Text placement = new Text((page * 10 + i + 1) + ". ");
             Text playerName = new Text(player.getName());
             Text playerScore = new Text("\t" + player.getPoints());
 
+            scoresPane.add(placement, 0, i);
             scoresPane.add(playerName, 1, i);
             scoresPane.add(playerScore, 2, i);
         }
 
         Button backButton = new Button("Back");
-        backButton.setAlignment(Pos.TOP_LEFT);
-        framePane.setTop(backButton);
+        framePane.add(backButton, 0, 0);
 
+        Text pageNumber = new Text("Page " + page + 1);
+        framePane.add(pageNumber, 1, 0);
+
+        HBox buttons = new HBox();
         Button nextButton = new Button(">");
-        nextButton.setAlignment(Pos.BOTTOM_RIGHT);
-        framePane.setBottom(nextButton);
-
         Button previousButton = new Button("<");
-        previousButton.setAlignment(Pos.BOTTOM_LEFT);
-        framePane.setBottom(previousButton);
+        buttons.getChildren().addAll(previousButton, nextButton);
+
+        framePane.add(buttons, 2, 0);
 
         backButton.setOnAction(e -> {
             primStage.setScene(mainMenu);
