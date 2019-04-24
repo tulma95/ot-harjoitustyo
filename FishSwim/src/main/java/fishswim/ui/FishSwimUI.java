@@ -42,9 +42,12 @@ public class FishSwimUI extends Application {
 
     public void hiScoresScene(Stage primStage) {
         List<Player> players = scoresDao.getScores();
-
+        int page = 0;
         GridPane pane = new GridPane();
-
+        for (int i = 0; i < 10; i++) {
+//            Text playerStats = new Text(STYLESHEET_MODENA)
+            pane.add(pane, i, i);
+        }
     }
 
     public void endGameScene(Stage primaryStage, int points) {
