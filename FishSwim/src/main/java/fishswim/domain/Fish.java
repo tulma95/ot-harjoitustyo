@@ -2,6 +2,10 @@ package fishswim.domain;
 
 import javafx.scene.shape.Circle;
 
+/**
+ *
+ * @author Riku
+ */
 public class Fish extends Circle implements GameObject {
 
     private double ySpeed;

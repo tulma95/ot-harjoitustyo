@@ -5,6 +5,10 @@ import java.util.Random;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 
+/**
+ *
+ * @author Riku
+ */
 public class Obstacle implements GameObject {
 
     private final Rectangle upperObstacle;
