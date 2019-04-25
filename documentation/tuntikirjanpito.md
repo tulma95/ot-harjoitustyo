@@ -9,4 +9,4 @@
 | 15.04     | 6               | Testien tekemistä esteille, ulkoasun parantelua ja lisää nappuloita, bugien korjailua|
 | 24.04     | 8               | Tietokannan käyttöönotto, javadocsien tekoa, grafiikoiden parantelua, huippupiste toimintojen valmistelua|
 | 25.04     | 5               | Dokumentoinnin parantelua, testien ja javadocin tekoa.|
-| Yhteensä  | 31              | 		                                                                                         |
+| Yhteensä  | 32              | 		                                                                                         |
