@@ -14,9 +14,9 @@ public class Obstacle implements GameObject {
     private final double speed;
 
     /**
-     * Obstacle constructor  
-     * 
-     *  @param speed -Obstacle moving speed
+     * Obstacle constructor
+     *
+     * @param speed -Obstacle moving speed
      */
     public Obstacle(double speed) {
         this.gap = 125;
@@ -35,10 +35,6 @@ public class Obstacle implements GameObject {
         Image weed = new Image("weed.png");
         this.upperObstacle.setFill(new ImagePattern(hook));
         this.lowerObstacle.setFill(new ImagePattern(weed));
-    }
-
-    public double getSpeed() {
-        return speed;
     }
 
     public Rectangle getUpperObstacle() {
@@ -82,11 +78,6 @@ public class Obstacle implements GameObject {
             this.generateObstacle();
         }
         this.x = upperObstacle.getX();
-    }
-
-    public Rectangle[] getObstacles() {
-        Rectangle[] rects = {this.upperObstacle, this.lowerObstacle};
-        return rects;
     }
 
     /**

@@ -1,6 +1,7 @@
 package fishswim.domain;
 
 import java.util.concurrent.atomic.AtomicInteger;
+import javafx.scene.shape.Rectangle;
 
 public class GameLogic {
 
@@ -35,8 +36,8 @@ public class GameLogic {
         return !obstacle.checkCollision(fish);
     }
 
-    public Obstacle getObstacle() {
-        return obstacle;
+    public Rectangle[] getObstacles() {
+        return new Rectangle[]{obstacle.getLowerObstacle(), obstacle.getUpperObstacle()};
     }
 
     public Fish getFish() {

@@ -7,7 +7,6 @@ import fishswim.domain.Fish;
 import fishswim.domain.GameLogic;
 import fishswim.domain.Obstacle;
 import fishswim.domain.Player;
-import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.HPos;
@@ -18,14 +17,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 
 public class FishSwimUI extends Application {
 
@@ -192,7 +189,7 @@ public class FishSwimUI extends Application {
         Text pointsText = new Text("Points: " + fishSwim.getPoints().get());
         pointsText.setX((width / 2) - (pointsText.getLayoutBounds().getWidth() / 2));
         pointsText.setY(20);
-        gamePane.getChildren().addAll(fishSwim.getObstacle().getObstacles());
+        gamePane.getChildren().addAll(fishSwim.getObstacles());
         gamePane.getChildren().add(fishSwim.getFish());
         gamePane.getChildren().add(pointsText);
         Scene gameScene = new Scene(gamePane, width, height);
