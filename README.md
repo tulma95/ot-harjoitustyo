@@ -12,6 +12,8 @@ Peliä pelataan  W-näppäimellä
 
 [Arkkitehtuurikuvaus](https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/arkkitehtuuri.md)
 
+[Käyttöohje](https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/kayttoohje.md)
+
 [Ladattava jar](https://github.com/tulma95/ot-harjoitustyo/releases)
 
 ## Komentorivitoiminnot
