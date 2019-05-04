@@ -2,10 +2,10 @@ package FishSwim;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import fishswim.domain.Fish;
+import static org.hamcrest.Matchers.greaterThan;
 import org.junit.Before;
 import org.junit.Test;
 import static org.hamcrest.core.Is.*;
-import org.junit.Assert;
 
 public class FishTest {
 
@@ -20,6 +20,20 @@ public class FishTest {
     public void fishFallsDown() {
         fish.move();
         assertThat(fish.getCenterY(), is(51.0));
+    }
+
+    @Test
+    public void fishMaxJumpSpeedWorks() {
+        fish.swimUp();
+        fish.swimUp();
+        assertThat(fish.getySpeed(), is(-7.5));
+    }
+
+    @Test
+    public void fishGravityWorks() {
+        double initialSpeed = fish.getySpeed();
+        fish.move();
+        assertThat(fish.getySpeed(), greaterThan(initialSpeed));
     }
 
     @Test

@@ -23,7 +23,7 @@ public class Fish extends Circle implements GameObject {
     public Fish(double x, double y, double height) {
         super(x, y, 15);
         this.ySpeed = 1;
-        this.gravity = 0.15;
+        this.gravity = 0.2;
         this.SCREEN_HEIGHT = height;
     }
 
@@ -46,10 +46,18 @@ public class Fish extends Circle implements GameObject {
     }
 
     /**
-     * Method changes fish y-axis movement direction by changing ySpeed
+     * Method changes fish y-axis movement direction by changing ySpeed. Fish
+     * speed can't go below 7.5
      */
     public void swimUp() {
-        this.ySpeed -= gravity * 50;
+        this.ySpeed -= gravity * 40;
+        if (this.ySpeed < -7.5) {
+            this.ySpeed = -7.5;
+        }
+    }
+
+    public double getySpeed() {
+        return ySpeed;
     }
 
 }
