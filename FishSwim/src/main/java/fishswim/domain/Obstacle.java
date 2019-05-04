@@ -41,18 +41,6 @@ public class Obstacle implements GameObject {
         this.lowerObstacle.setFill(new ImagePattern(weed));
     }
 
-    public Rectangle getUpperObstacle() {
-        return upperObstacle;
-    }
-
-    public Rectangle getLowerObstacle() {
-        return lowerObstacle;
-    }
-
-    public double getX() {
-        return x;
-    }
-
     /**
      * Method checks if fish character hits upper or lower obstacle
      *
@@ -101,6 +89,17 @@ public class Obstacle implements GameObject {
         this.lowerObstacle.setY(y + gap);
         this.lowerObstacle.setWidth(50);
         this.lowerObstacle.setHeight(400 - y - gap);
+    }
 
+    public Rectangle getUpperObstacle() {
+        return upperObstacle;
+    }
+
+    public Rectangle getLowerObstacle() {
+        return lowerObstacle;
+    }
+
+    public double getX() {
+        return x;
     }
 }

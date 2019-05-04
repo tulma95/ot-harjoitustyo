@@ -29,7 +29,6 @@ public class FishSwimUI extends Application {
     private GameLogic fishSwim;
     private Scene mainMenu;
     private Scene endgameScene;
-//    private Scene 
     private ScoresDao scoresDao;
     private double height;
     private double width;
@@ -54,8 +53,9 @@ public class FishSwimUI extends Application {
         framePane.setHgap(25);
         framePane.setPadding(new Insets(50));
 
-        int listSize = players.size();
-        int howManyToShow = listSize - (page * 10) > 10 ? 10 : listSize % 10;
+        double listSize = players.size();
+        int maxPages = (int) Math.ceil(listSize / 10);
+        double howManyToShow = listSize - (page * 10) >= 10 ? 10 : listSize % 10;
 
         for (int i = 0; i < howManyToShow; i++) {
             Player player = players.get((page * 10) + i);
@@ -71,7 +71,7 @@ public class FishSwimUI extends Application {
         Button backButton = new Button("Back");
         framePane.add(backButton, 0, 0);
 
-        Label pageNumber = new Label("Page " + page + 1);
+        Label pageNumber = new Label("Page " + (page + 1) + "/" + maxPages);
         pageNumber.setFont(Font.font(20));
         framePane.add(pageNumber, 1, 0);
         GridPane.setHalignment(pageNumber, HPos.CENTER);
@@ -85,6 +85,18 @@ public class FishSwimUI extends Application {
 
         backButton.setOnAction(e -> {
             primStage.setScene(mainMenu);
+        });
+
+        nextButton.setOnAction(e -> {
+            if (page < maxPages - 1) {
+                hiScoresScene(primStage, page + 1);
+            }
+        });
+
+        previousButton.setOnAction(e -> {
+            if (page > 0) {
+                hiScoresScene(primStage, page - 1);
+            }
         });
 
         Scene hiScoreScene = new Scene(framePane, width, height);

@@ -47,7 +47,7 @@ public class Fish extends Circle implements GameObject {
 
     /**
      * Method changes fish y-axis movement direction by changing ySpeed. Fish
-     * speed can't go below 7.5
+     * speed can't go below -7.5
      */
     public void swimUp() {
         this.ySpeed -= gravity * 40;
