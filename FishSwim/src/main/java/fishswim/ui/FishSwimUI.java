@@ -17,10 +17,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -28,7 +32,6 @@ public class FishSwimUI extends Application {
 
     private GameLogic fishSwim;
     private Scene mainMenu;
-    private Scene endgameScene;
     private ScoresDao scoresDao;
     private double height;
     private double width;
@@ -198,6 +201,7 @@ public class FishSwimUI extends Application {
         fishSwim = new GameLogic(fish, obstacle);
 
         Pane gamePane = new Pane();
+        gamePane.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
         Text pointsText = new Text("Points: " + fishSwim.getPoints().get());
         pointsText.setX((width / 2) - (pointsText.getLayoutBounds().getWidth() / 2));
         pointsText.setY(20);
