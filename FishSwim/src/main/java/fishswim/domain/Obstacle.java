@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 
 /**
- *
+ * Obstacle for FishSwim game
  * @author Riku
  */
 public class Obstacle implements GameObject {

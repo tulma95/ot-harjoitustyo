@@ -3,8 +3,7 @@ package fishswim.domain;
 import javafx.scene.shape.Circle;
 
 /**
- *
- * @author Riku
+ * Fish object for fishSwim game
  */
 public class Fish extends Circle implements GameObject {
 

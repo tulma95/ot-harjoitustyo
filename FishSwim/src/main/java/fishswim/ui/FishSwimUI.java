@@ -40,7 +40,7 @@ public class FishSwimUI extends Application {
     public void init() throws Exception {
         this.height = 400;
         this.width = 400;
-        this.scoresDao = new ScoresDao();
+        this.scoresDao = new ScoresDao("scores.db");
     }
 
     public void hiScoresScene(Stage primStage, int page) {

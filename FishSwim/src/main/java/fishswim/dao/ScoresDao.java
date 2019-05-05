@@ -10,12 +10,18 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class takes care of database connections
+ */
 public class ScoresDao {
 
     private String url;
 
-    public ScoresDao() {
-        this.url = "jdbc:sqlite:scores.db";
+    /**
+     * Creates ScoreDao object and initialises database if it doesn't exists
+     */
+    public ScoresDao(String dbName) {
+        this.url = "jdbc:sqlite:" + dbName;
         initDatabase();
     }
 
@@ -39,7 +45,6 @@ public class ScoresDao {
                 Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
         }
     }
 
@@ -62,6 +67,7 @@ public class ScoresDao {
 
     /**
      * Method gets saved players and their scores from database
+     *
      * @return list of player objects
      */
     public List<Player> getScores() {
@@ -77,7 +83,6 @@ public class ScoresDao {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
         }
         return players;
     }

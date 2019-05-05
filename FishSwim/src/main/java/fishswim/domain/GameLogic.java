@@ -3,12 +3,21 @@ package fishswim.domain;
 import java.util.concurrent.atomic.AtomicInteger;
 import javafx.scene.shape.Rectangle;
 
+/**
+ * FishSwim game logic happens here
+ */
 public class GameLogic {
 
     private Obstacle obstacle;
     private Fish fish;
     private AtomicInteger points;
 
+    /**
+     * Creates new GameLogig instance with given Fish and Obstacle
+     *
+     * @param fish
+     * @param obstacle
+     */
     public GameLogic(Fish fish, Obstacle obstacle) {
         this.fish = fish;
         this.obstacle = obstacle;
