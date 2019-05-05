@@ -8,17 +8,12 @@ package FishSwim;
 import fishswim.dao.ScoresDao;
 import fishswim.domain.Player;
 import java.io.File;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import static org.hamcrest.core.Is.is;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Rule;
-import org.junit.rules.TemporaryFolder;
 
 /**
  *

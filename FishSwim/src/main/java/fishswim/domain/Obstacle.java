@@ -21,6 +21,7 @@ public class Obstacle implements GameObject {
      * Obstacle constructor
      *
      * @param speed -Obstacle moving speed
+     * @param r -Random object for generating obstacle
      */
     public Obstacle(double speed, Random r) {
         this.gap = 125;
