@@ -16,9 +16,9 @@ Pelissä on 4 eri näkymää. Peli aukeaa päävalikkoon, jossa käyttäjällä 
 
 ### Pelinäkymä
 
-- Pelaaja voi hallita hahmon asemaa tiettyä nappia painamalla
+- Pelaaja voi hallita hahmon asemaa painamalla W- tai Space-nappia
 - Pelaaja saa pisteitä ohittaessaan merilevän
-- Peli päättyy kun hahmo osuu merilevään ja näkymä siirtyy lopetusnäkymään
+- Peli päättyy kun hahmo osuu merilevään tai koukkuun ja näkymä siirtyy lopetusnäkymään
 
 ### Lopetusnäkymä
 - Käyttäjä voi tallentaa pisteensä tietokantaan

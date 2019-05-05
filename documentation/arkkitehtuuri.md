@@ -23,13 +23,21 @@ Näkymät ovat Scene-olioita joista kaikki muut generoidaan uudestaan niitä kut
 
 ## Sovelluslogiikka
 
+Sovelluslogiikka pitää huolen itse FishSwim pelistä. Peliin injektoidaan oliot Fish, Obstacle ja Random joita peli tarvitsee toimiakseen. Käyttöliittymä pääsee käsiksi pelin pisteisiin getScores()-metodilla, jotta tietokantaan voidaan tallentaa oikeat pisteet.
+
+Tietokantayhteydet tapahtuvat UI-luokan kautta Hi-score ja endgame-näkymässä ScoresDaon metodeja saveScores(Player player) ja getScores() hyödyntäen.
+
+Pakkauskaavio josta näkee komponenttien yhteydet:
+
+<img src="https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/Kuvat/Pakkauskaaviov2.png" width="750">
+
 ## Tietokannanhallinta
 
+Tietokannan luomisesta ja sen yheyksien hallinnasta huolehtii pakkauksessa fishswim.dao oleva luokka ScoresDao.
 
-## Pakkauskaavio
-
-<img src="https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/Kuvat/Pakkauskaavio.png" width="750">
-
+ScoresDao luo sqlite tietokannan scores.db tiedostoon. 
+Tietokannan tietokantakaavio:
+<img src="https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/Kuvat/tietokantakaavio.png" width="300">
 
 ## Päätoiminnallisuudet
 
@@ -38,3 +46,7 @@ Näkymät ovat Scene-olioita joista kaikki muut generoidaan uudestaan niitä kut
 Kun käyttäjä painaa main menussa "play game"-nappia, tapahtuu seuraavanlainen tapahtumaketju:
 <img src="https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/Kuvat/Sekvenssikaavio.png" width="750">
 
+## Sovelluksen parannuksia
+
+### sovelluslogiikka
+Ohjelmaan olisi voinut tehdä vielä yhden laajemman sovelluslogiikasta huolehtivan luokan. Se käynnistäisi pelin ja hoitaisi tietokantayhteydet, jottei ne tapahtuisi käyttöliittymästä.
