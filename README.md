@@ -17,7 +17,7 @@ Peliä pelataan  W-näppäimellä
 [Testausdokumentti](https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/testaus.md)
 
 
-[Ladattava jar](https://github.com/tulma95/ot-harjoitustyo/releases)
+[Ladattava jar](https://github.com/tulma95/ot-harjoitustyo/releases/tag/Loppupalautus)
 
 ## Komentorivitoiminnot
 
