@@ -13,4 +13,4 @@ Järjestelmätestaus on suoritettu manuaalisesti useamman henkilön toimesta.
 
 Testikattavuuteen ei ole otettu käyttöliittymää mukaan.
 
-<img source="https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/Kuvat/testikattavuus.png">
+<img source="https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/Kuvat/testikattavuus.png"  width="750">

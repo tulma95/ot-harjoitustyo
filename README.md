@@ -14,6 +14,9 @@ Peliä pelataan  W-näppäimellä
 
 [Käyttöohje](https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/kayttoohje.md)
 
+[Testausdokumentti](https://github.com/tulma95/ot-harjoitustyo/blob/master/documentation/testaus.md)
+
+
 [Ladattava jar](https://github.com/tulma95/ot-harjoitustyo/releases)
 
 ## Komentorivitoiminnot
