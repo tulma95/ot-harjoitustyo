@@ -111,12 +111,14 @@ public class FishSwimUI extends Application {
     public void endGameScene(Stage primaryStage, int points) {
         GridPane pane = new GridPane();
         pane.setAlignment(Pos.CENTER);
+        pane.setVgap(10);
 
         TextField textfield = new TextField();
         textfield.setPrefWidth(100);
 
         Label scores = new Label();
         scores.setText("POINTS: " + points);
+        scores.setPrefWidth(100);
 
         Button playAgainButton = new Button("Play again");
         playAgainButton.setPrefWidth(100);
@@ -131,15 +133,20 @@ public class FishSwimUI extends Application {
 
         buttons.setAlignment(Pos.CENTER);
 
-        pane.add(scores, 0, 0);
-        pane.add(textfield, 0, 1);
-        pane.add(buttons, 0, 2);
+        pane.add(scores, 0, 1);
+        pane.add(textfield, 0, 2);
+        pane.add(buttons, 0, 3);
 
         saveScoreButton.setOnAction(e -> {
-            Player player = new Player(textfield.getText(),
-                    points);
-            scoresDao.saveScores(player);
-            primaryStage.setScene(mainMenu);
+            int nameLength = textfield.getText().length();
+            if (nameLength < 3 || nameLength > 10) {
+                pane.add(new Label("Name must be between 3 or 10 characters"), 0, 0);
+            } else {
+                Player player = new Player(textfield.getText(),
+                        points);
+                scoresDao.saveScores(player);
+                primaryStage.setScene(mainMenu);
+            }
         });
 
         playAgainButton.setOnAction(e -> {
