@@ -2,11 +2,9 @@ package FishSwim;
 
 import fishswim.domain.Fish;
 import fishswim.domain.Obstacle;
+import java.util.Random;
 import static org.hamcrest.CoreMatchers.not;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.hamcrest.core.Is.*;
@@ -17,7 +15,8 @@ public class ObstacleTest {
 
     @Before
     public void setUp() {
-        this.obstacle = new Obstacle(4);
+        Random r = new Random(1337L);
+        this.obstacle = new Obstacle(4, r);
     }
 
     @Test
@@ -42,7 +41,6 @@ public class ObstacleTest {
     public void obstacleCanMove() {
         double previousX = this.obstacle.getX();
         this.obstacle.move();
-
         assertThat(previousX, is(not(this.obstacle.getX())));
     }
 
@@ -56,9 +54,7 @@ public class ObstacleTest {
             }
             this.obstacle.move();
         }
-
         assertThat(previousY, is(not(this.obstacle.getLowerObstacle().getY())));
-
     }
 
     @Test

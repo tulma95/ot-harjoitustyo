@@ -7,7 +7,6 @@ import javafx.scene.paint.ImagePattern;
 
 /**
  * Obstacle for FishSwim game
- * @author Riku
  */
 public class Obstacle implements GameObject {
 
@@ -16,16 +15,19 @@ public class Obstacle implements GameObject {
     private final int gap;
     private double x;
     private final double speed;
+    private Random r;
 
     /**
      * Obstacle constructor
      *
      * @param speed -Obstacle moving speed
      */
-    public Obstacle(double speed) {
+    public Obstacle(double speed, Random r) {
         this.gap = 125;
         this.upperObstacle = new Rectangle();
         this.lowerObstacle = new Rectangle();
+        this.r = r;
+
         this.generateObstacle();
         this.x = upperObstacle.getX();
         this.speed = speed;
@@ -77,7 +79,6 @@ public class Obstacle implements GameObject {
      * gap to change place.
      */
     public void generateObstacle() {
-        Random r = new Random();
         double y = r.nextInt(175) + 50;
 
         this.upperObstacle.setX(400);

@@ -8,6 +8,7 @@ import fishswim.domain.GameLogic;
 import fishswim.domain.Obstacle;
 import fishswim.domain.Player;
 import java.util.List;
+import java.util.Random;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -196,7 +197,7 @@ public class FishSwimUI extends Application {
 
     public void startGame(Stage primaryStage) {
         Fish fish = new Fish(50, 50, height);
-        Obstacle obstacle = new Obstacle(4);
+        Obstacle obstacle = new Obstacle(4, new Random());
         obstacle.setImg();
         fishSwim = new GameLogic(fish, obstacle);
 
@@ -242,7 +243,6 @@ public class FishSwimUI extends Application {
         createMainMenu(primaryStage);
         primaryStage.setScene(mainMenu);
         primaryStage.show();
-
     }
 
     public static void main(String[] args) {
